@@ -175,7 +175,7 @@ function populateChart(data) {
 
 function calculateTotalWeight(data) {
   let totals = [];
-
+  console.log("line 178 in stats" + JSON.stringify(data))
   data.forEach((workout) => {
     const workoutTotal = workout.exercises.reduce((total, { type, weight }) => {
       if (type === 'resistance') {

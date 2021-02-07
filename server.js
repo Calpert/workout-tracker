@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost/workout",{
     useFindAndModify:false
 
 })
-app.use(require("./public/apiroutes.js"))
+app.use(require("./routes/apiroutes.js"))
 app.use(require("./routes/htmlroutes.js"))
 app.listen(PORT, ()=>{
     console.log("app running on PORT 3000")
