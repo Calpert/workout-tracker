@@ -19,3 +19,14 @@ app.use(require("./routes/htmlroutes.js"))
 app.listen(PORT, ()=>{
     console.log("app running on PORT 3000")
 })
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
+  
