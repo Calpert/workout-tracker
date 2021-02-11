@@ -31,21 +31,21 @@ const workoutSchema = new Schema(
                 },
             },
         ]
-
     },
- {
-        toJSON: {
-            virtuals: true
-        },
-    }
-
-
-
 )
-workoutSchema.virtual("totalDuration").get(function () {
-    return this.exercise.reduce((total, exercises) => {
-        return total + exercises.duration
-    }, 0)
-})
-const Workout = mongoose.model("workout", workoutSchema)
-module.exports = Workout
+//  {
+//         toJSON: {
+//             virtuals: true
+//         },
+//     }
+
+
+
+// )
+// workoutSchema.virtual("totalDuration").get(function () {
+//     return this.exercise.reduce((total, exercises) => {
+//         return total + exercises.duration
+//     }, 0)
+// })
+// const Workout = mongoose.model("workout", workoutSchema)
+module.exports = Workout;
