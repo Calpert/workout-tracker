@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(express.static("public"))
 app.use(logger("dev"))
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    process.env.MONGODB_URI || 'mongodb://localhost/workout2',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

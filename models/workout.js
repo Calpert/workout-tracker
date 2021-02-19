@@ -13,6 +13,10 @@ const workoutSchema = new Schema(
                     trim: true,
                     required: "Enter in a type of exercise"
                 },
+                name: {
+                    type: String,
+                    required: "Enter in an exercise"
+                },
                 weight: {
                     type: Number
                 },
@@ -47,5 +51,5 @@ const workoutSchema = new Schema(
 //         return total + exercises.duration
 //     }, 0)
 // })
-const Workout = mongoose.model("workout", workoutSchema)
+const Workout = mongoose.model("Workout", workoutSchema)
 module.exports = Workout;

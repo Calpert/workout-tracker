@@ -6,7 +6,7 @@ router.get("/api/workouts", (req, res)=>{
         {
             $addFields:{
                 totalDuration:{
-                    $sum:"$exercise.duration"
+                    $sum:"$exercises.duration"
                 }
             }
         }
@@ -26,17 +26,17 @@ router.post("/api/workouts", (req, res)=>{
     })
 })
 
-router.delete("/api/workouts", ({body}, res)=>{
-    Workout.findByIdAndDelete(body.id).then(()=>{
-        res.json(true)
-    }).catch((error)=>{
-        console.log(error)
-    })
-})
+// router.delete("/api/workouts", ({body}, res)=>{
+//     Workout.findByIdAndDelete(body.id).then(()=>{
+//         res.json(true)
+//     }).catch((error)=>{
+//         console.log(error)
+//     })
+// })
 
-router.put("/api/workouts/:id", ({body,params}, res)=>{
-    Workout.findByIdAndUpdate(params.id,
-       {$push:{exercise:body}}, {new:true, runValidators:true} ).then((dbWorkout)=>{
+router.put("/api/workouts/:id", (req, res)=>{
+    Workout.findByIdAndUpdate(req.params.id,
+       {$push:{exercises:req.body}}, {new:true, runValidators:true} ).then((dbWorkout)=>{
         res.json(dbWorkout)
     }).catch((error)=>{
         console.log(error)
@@ -48,10 +48,10 @@ router.get("/api/workouts/range", (req, res)=>{
         {
             $addFields:{
                 totalDuration:{
-                    $sum:"$exercise.duration"
-                }
-            }
-        }
+                    $sum:"$exercises.duration"
+                },
+            },
+        },
     ]).sort({_id:-1})
     .limit(7)
     .then((dbWorkout)=>{
